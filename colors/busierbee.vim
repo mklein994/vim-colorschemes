@@ -57,4 +57,3 @@ hi pythonException ctermfg=200
 hi pythonOperator  ctermfg=103
 hi pythonBuiltinFunction ctermfg=200
 hi pythonExClass   ctermfg=200
-
