@@ -46,7 +46,7 @@ def github_access_token
 end
 
 # Get up to 30 pages of colorschemes
-(1..30).each do |i|
+(1..44).each do |i|
   json = JSON.parse(open("#{base_url}?page=#{i}").read)
 
   # Quit if at end of the list
