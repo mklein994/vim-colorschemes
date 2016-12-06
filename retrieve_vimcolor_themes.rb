@@ -12,10 +12,10 @@ def clone_repo(github_path)
   # Generate an output name based upon the number of stars the repo has
   # so that themes with more stars get selected in case of duplicate names
   stars_prefix = "%05d" % stars_count(github_path)
-  local_path = "#{stars_prefix}#{github_path.gsub('/', '-')}"
+  local_path = "#{stars_prefix}#{github_path.gsub('/', '__')}"
 
   # Begin clone
-  clone_command = "git clone git@github.com:#{github_path} #{local_path}"
+  clone_command = "git clone https://github.com/#{github_path} #{local_path}"
   puts clone_command
   pid = Process.spawn(clone_command)
 
@@ -45,8 +45,8 @@ def github_access_token
   end
 end
 
-# Get up to 30 pages of colorschemes
-(1..30).each do |i|
+# Get up to 46 pages of colorschemes
+(1..46).each do |i|
   json = JSON.parse(open("#{base_url}?page=#{i}").read)
 
   # Quit if at end of the list
@@ -68,3 +68,4 @@ end
 # Copy files into the colors directory
 Dir.chdir ".."
 system("cp repos/*/colors/*.vim colors/")
+find -maxdepth 2 -mindepth 2 -path './repos/*'
